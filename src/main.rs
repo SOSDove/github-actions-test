@@ -3,9 +3,8 @@ use std::io::{stdout, Write};
 use std::io;
 use crossterm::{
     execute,
-    style::{Color, Print, ResetColor, SetBackgroundColor, SetForegroundColor},
-    ExecutableCommand, Result,
-    event,
+    style::{Color, Print, ResetColor, SetForegroundColor},
+    ExecutableCommand,
 };
 use serde_yaml;
 use crate::values_yaml::{ApplicationValues, Choice};
