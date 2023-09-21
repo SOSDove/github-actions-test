@@ -26,7 +26,7 @@ fn main() {
         Ok(num) => num,
         Err(_) => {
             println!("Please enter a valid number!");
-            return; // or handle the error as you see fit
+            return;
         }
     };
 
