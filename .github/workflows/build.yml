@@ -34,4 +34,5 @@ jobs:
         git config --local user.name "GitHub Action"
         git add -A
         git commit -m "Add build artifacts" || echo "No changes to commit"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/SOSDove/github-actions-test.git
         git push
