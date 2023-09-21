@@ -1,0 +1,38 @@
+name: Build Rust Project
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+
+    - name: Build Release
+      run: cargo build --release
+
+    - name: Create Release Folder
+      run: mkdir -p release_folder
+
+    - name: Move Binary
+      run: mv target/release/sos-application-manager ./release_folder/
+
+    - name: Commit and Push
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -A
+        git commit -m "Add build artifacts" || echo "No changes to commit"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/SOSDove/github-actions-test.git
+        git push
