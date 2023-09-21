@@ -31,7 +31,6 @@ fn main() {
     };
 
     if let Some((app_name, app)) = apps_map.get(&choice) {
-        // Display app name
         execute!(
         stdout(),
         SetForegroundColor(Color::Yellow),
